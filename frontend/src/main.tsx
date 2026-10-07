@@ -377,7 +377,6 @@ function AdminDashboard() {
 }
 
 function LoginPage() {
-  const navigate = useNavigate();
   const [email, setEmail] = useState('doctor@twincare.ai');
   const [password, setPassword] = useState('Demo@123');
   const [error, setError] = useState('');
@@ -398,7 +397,7 @@ function LoginPage() {
     };
 
     localStorage.setItem('twincare-session', JSON.stringify(session));
-    navigate(isAdmin ? '/admin' : '/dashboard');
+    window.location.assign(isAdmin ? '/admin' : '/dashboard');
   };
 
   return (
@@ -466,7 +465,11 @@ function AppRouter() {
     }
   }, [session]);
 
-  const logout = () => setSession(null);
+  const logout = () => {
+    setSession(null);
+    localStorage.removeItem('twincare-session');
+    window.location.assign('/');
+  };
 
   return (
     <BrowserRouter>
@@ -480,4 +483,12 @@ function AppRouter() {
   );
 }
 
-createRoot(document.getElementById('root')!).render(<AppRouter />);
+const rootElement = document.getElementById('root');
+if (!rootElement) {
+  throw new Error('TwinCare root element not found');
+}
+
+const existingRoot = (rootElement as any).__twincare_root;
+const reactRoot = existingRoot ?? createRoot(rootElement);
+(rootElement as any).__twincare_root = reactRoot;
+reactRoot.render(<AppRouter />);
