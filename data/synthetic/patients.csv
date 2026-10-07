@@ -1,0 +1,6 @@
+id,name,age,gender,condition,risk_level,twin_status
+TC1024,Maya Rao,54,Female,Type 2 Diabetes,Moderate,Active
+TC1091,Arjun Mehta,61,Male,Hypertension,High,Active
+TC1117,Leela Nair,43,Female,Prediabetes,Low,Stable
+TC1073,Kabir Singh,68,Male,Cardiac follow-up,High,Active
+TC1132,Ananya Das,36,Female,Wellness monitoring,Low,Stable

@@ -1,0 +1,8 @@
+{
+  "synthetic": true,
+  "source": "EHR + wearable demo data",
+  "patient_id": "TC1024",
+  "risk_level": "Moderate",
+  "features": ["glucose", "sleep", "activity", "HRV", "HbA1c"],
+  "prediction_window_hours": 2
+}

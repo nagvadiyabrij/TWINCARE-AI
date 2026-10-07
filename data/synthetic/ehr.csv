@@ -1,0 +1,4 @@
+patient_id,diagnosis,hba1c,blood_pressure,cholesterol,glucose,medical_history
+TC1024,Type 2 Diabetes,7.2,138/86,196,142,"History of elevated fasting glucose; metformin therapy"
+TC1091,Hypertension,6.1,152/94,211,118,"Atrial rhythm variability; prior lifestyle intervention"
+TC1117,Prediabetes,6.4,124/82,178,110,"Family history of metabolic syndrome"
