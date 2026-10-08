@@ -2,6 +2,8 @@
 
 TwinCare AI is a full-stack healthcare digital twin prototype that transforms EHR and wearable data into predictive insights for clinicians. It combines a React frontend, FastAPI backend, and an ML-driven risk model to simulate a doctor dashboard with live patient monitoring, alerts, EHR records, and AI-generated risk predictions.
 
+**GitHub Repository:** https://github.com/nagvadiyabrij/TWINCARE-AI
+
 ## Problem Statement
 Healthcare teams often need to synthesize fragmented patient information from historical records, wearable monitoring, and clinical markers to spot rising risk before it becomes critical. TwinCare AI demonstrates how a digital twin-style workflow can connect these streams into a unified patient view and prediction engine.
 
