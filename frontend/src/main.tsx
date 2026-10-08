@@ -1,6 +1,6 @@
 ﻿import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import { HashRouter, Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import { Activity, AlertTriangle, BellRing, BrainCircuit, ChevronRight, ClipboardList, FileText, HeartPulse, LayoutDashboard, Search, Settings, Sparkles, Users, Watch } from 'lucide-react';
 import { Area, AreaChart, Bar, BarChart, Cell, Line, LineChart, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis } from 'recharts';
 import './styles.css';
@@ -376,7 +376,8 @@ function AdminDashboard() {
   );
 }
 
-function LoginPage() {
+function LoginPage({ onLogin }: { onLogin: (session: Session) => void }) {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('doctor@twincare.ai');
   const [password, setPassword] = useState('Demo@123');
   const [error, setError] = useState('');
@@ -396,8 +397,8 @@ function LoginPage() {
       role: isAdmin ? 'ADMIN' : 'DOCTOR',
     };
 
-    localStorage.setItem('twincare-session', JSON.stringify(session));
-    window.location.assign(isAdmin ? '/admin' : '/dashboard');
+    onLogin(session);
+    navigate(isAdmin ? '/admin' : '/dashboard');
   };
 
   return (
@@ -467,19 +468,17 @@ function AppRouter() {
 
   const logout = () => {
     setSession(null);
-    localStorage.removeItem('twincare-session');
-    window.location.assign('/');
   };
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
-        <Route path="/" element={session ? (session.role === 'ADMIN' ? <Navigate to="/admin" replace /> : <Navigate to="/dashboard" replace />) : <LoginPage />} />
+        <Route path="/" element={session ? (session.role === 'ADMIN' ? <Navigate to="/admin" replace /> : <Navigate to="/dashboard" replace />) : <LoginPage onLogin={setSession} />} />
         <Route path="/dashboard" element={session ? <DoctorDashboard /> : <Navigate to="/" replace />} />
         <Route path="/admin" element={session?.role === 'ADMIN' ? <AdminDashboard /> : <Navigate to="/" replace />} />
       </Routes>
       {session && <button className="logout-button" onClick={logout}>Logout</button>}
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

@@ -1,10 +1,5 @@
 # TwinCare AI Admin Panel
 
-This folder stores the enterprise administration view for the TwinCare AI system.
+The current Admin dashboard is a static prototype view implemented in `frontend/src/main.tsx`; this directory does not contain a separate admin application. Its summary cards and charts are demonstration content, not live database-backed administration functions.
 
-The admin panel includes:
-- user and doctor management
-- patient and twin oversight
-- EHR and wearable administration
-- model, prediction, and alert operations
-- audit logs and settings
+The FastAPI prototype separately exposes role-protected user and admin overview endpoints. Audit logs, full user management workflows, and production administration controls are not implemented.

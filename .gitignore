@@ -4,6 +4,17 @@ frontend/dist/
 frontend/.vite/
 frontend/.env
 
+# Secrets and local database files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+database/*.db
+backend/uploads/*
+
 # Python / backend
 backend/.venv/
 backend/__pycache__/

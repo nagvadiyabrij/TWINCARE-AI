@@ -1,12 +1,5 @@
 # TwinCare AI Database
 
-This directory contains the project database configuration, schema, migrations, seed data, and backup location.
+The current FastAPI backend creates `twincare.db` in this directory using SQLite and SQLAlchemy. Tables and demo records are created/seeded by `backend/app/main.py` when the service starts. The database file is generated locally and is ignored by Git.
 
-Production target: PostgreSQL
-Development fallback: SQLite
-
-Files:
-- twincare.db (SQLite local dev database)
-- backups/ (database backup exports)
-- migrations/ (schema migration scripts)
-- seeds/ (demo seed data)
+PostgreSQL is not configured in the current implementation. The `backups/`, `migrations/`, and `seeds/` directories are reserved; no migration framework or separate seed scripts are currently provided.
